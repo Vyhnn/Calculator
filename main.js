@@ -68,6 +68,11 @@ function cal() {
 			if(currentNum!=0) {
 				result = divide(result, currentNum);
 			}
+			else {
+				alert("You can't divide by 0!!")
+				formula.pop();
+				formula.pop();
+			}
 			break;
 		}
 		console.log(result)
