@@ -46,7 +46,7 @@ function plusmn() {
 }
 
 function update() {
-	numDisplay.innerHTML = currentNum;
+	numDisplay.innerHTML = parseFloat(parseFloat(result).toPrecision(12));
 	formulaDisplay.innerHTML = formula.join(' ');
 }
 
@@ -88,7 +88,6 @@ function operate(operator) {
 				else {result = currentNum;}
 				currentNum = '';
 				update();
-				numDisplay.innerHTML = result;
 	      break;
 	    case '-':
 				formula.push(currentNum);
@@ -97,7 +96,6 @@ function operate(operator) {
 				else {result = currentNum;}
 				currentNum = '';
 				update();
-				numDisplay.innerHTML = result;
 	      break;
 	    case '×':
 				formula.push(currentNum);
@@ -106,7 +104,6 @@ function operate(operator) {
 				else {result = currentNum;}
 				currentNum = '';
 				update();
-				numDisplay.innerHTML = result;
 	      break;
 	    case '÷':
 				formula.push(currentNum);
@@ -115,7 +112,6 @@ function operate(operator) {
 				else {result = currentNum;}
 				currentNum = '';
 				update();
-				numDisplay.innerHTML = result;
 	      break;
 	    case '√':
 	      return root(x);
@@ -140,7 +136,6 @@ function operate(operator) {
 				currentNum = '';
 				formula = [];
 				update();
-				numDisplay.innerHTML = result;
 				result = '';
 
 	    default:
@@ -151,8 +146,11 @@ function operate(operator) {
 }
 
 function displayNum(x) {
-	currentNum += x;
-  numDisplay.innerHTML = currentNum;
+	if(x!='.'||!currentNum.includes('.')){
+		currentNum += x;
+	  numDisplay.innerHTML = currentNum;
+	}
+
 }
 //apply onclick listeners
 const nums = document.getElementsByClassName("num-btn");
