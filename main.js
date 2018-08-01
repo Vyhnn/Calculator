@@ -25,17 +25,11 @@ function power(x, y) {
 	return Math.pow(parseFloat(x), parseFloat(y));
 }
 
-function root(x) {
-  Math.sqrt(parseFloat(x));
-}
-
 function modulus(x, y) {
   return parseFloat(x)%parseFloat(y);
 }
 
 function clear() {
-  formulaDisplay.innerHTML = '';
-  numDisplay.innerHTML = '';
   formula = [];
 	currentNum = '';
 	result = '';
@@ -46,13 +40,15 @@ function plusmn() {
 }
 
 function update() {
-	numDisplay.innerHTML = parseFloat(parseFloat(result).toPrecision(12));
+	if(result!=''){
+		numDisplay.innerHTML = parseFloat(parseFloat(result).toPrecision(10));
+	}
+	else {numDisplay.innerHTML = ''}
 	formulaDisplay.innerHTML = formula.join(' ');
 }
 
 function cal() {
 	const operator = formula[formula.length-3];
-	console.log(operator);
 
 	switch (operator) {
 		case '+':
@@ -113,21 +109,17 @@ function operate(operator) {
 				currentNum = '';
 				update();
 	      break;
-	    case '√':
-	      return root(x);
-	      break;
-	    case '%':
-	      return modulus(x, y);
-	      break;
-	    case '^':
-	      return power(x, y);
+			case 'C':
+	      clear();
+				update();
 	      break;
 	    case 'CE':
-	      return clear();
+	      currentNum = '';
+				numDisplay.innerHTML = ''
 	      break;
 	    case '±':
 	      plusmn();
-				update();
+				numDisplay.innerHTML = currentNum;
 	      break;
 			case '=':
 				formula.push(currentNum);
@@ -146,7 +138,11 @@ function operate(operator) {
 }
 
 function displayNum(x) {
-	if(x!='.'||!currentNum.includes('.')){
+	if(x=='DEL') {
+		currentNum = currentNum.slice(0, -1);
+		numDisplay.innerHTML = currentNum;
+	}
+	else if(x!='.'||!currentNum.includes('.')){
 		currentNum += x;
 	  numDisplay.innerHTML = currentNum;
 	}

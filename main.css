@@ -2,10 +2,18 @@ body {
   text-align: center;
   margin: auto;
   width: 350px;
+  font-family: 'Orbitron', sans-serif;
+  font-weight: 500;
+  background-color: #333;
+}
+
+h1 {
+  color: #EEE;
+  font-size: 50px;
 }
 
 .container {
-  border: 1px solid black;
+  background-color: #999;
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr;
   grid-template-rows: 2fr 1fr 1fr 1fr 1fr 1fr;
@@ -13,17 +21,23 @@ body {
   height: 500px;
   border-radius: 5px;
   margin-top: 50px;
-  padding: 5px;
+  padding: 10px;
+  box-shadow: 3px 3px #666;
+
 }
 
 #display {
+  background-color: #FFF;
   grid-column: 1 / span 4;
   grid-row: 1 / span 1;
-  border: 1px solid black;
   border-radius: 5px;
   margin: 5px;
   display: grid;
   grid-template: 1fr 2fr / 1fr;
+  padding-right: 8px;
+  white-space: nowrap;
+  overflow: auto;
+  overflow-y: hidden;
 }
 
 #formula {
@@ -45,7 +59,19 @@ body {
 
 button {
   border-radius: 5px;
+  border: none;
+  box-shadow: 2px 2px #777;
   font-size: 1.5em;
+  font-family: 'Roboto', sans-serif;
+  font-weight: 700;
+  background-color: #EEE;
+}
+
+button:focus {outline:0;}
+
+button:active {
+  background-color: #CCC;
+  box-shadow: none;
 }
 
 #btn-9 {
@@ -138,12 +164,12 @@ button {
   grid-row: 6 / span 1;
 }
 
-#btn-modulus {
+#btn-C {
   grid-column: 2 / span 1;
   grid-row: 2 / span 1;
 }
 
-#btn-root {
+#btn-del {
   grid-column: 3 / span 1;
   grid-row: 2 / span 1;
 }
